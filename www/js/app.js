@@ -1,9 +1,9 @@
-document.addEventListener('deviceready', onDeviceReady, false);
+// document.addEventListener('deviceready', onDeviceReady, false);
 
-function onDeviceReady() {
-    // console.log('Device is ready');
-    fetchIncidents();
-}
+// function onDeviceReady() {
+//     console.log('Device is ready');
+//     // fetchIncidents();
+// }
 
 function handleLogin(event) {
     event.preventDefault();
@@ -26,7 +26,6 @@ function handleLogin(event) {
         if (data.token) {
             localStorage.setItem('token', data.token);
             window.location.href = 'main.html';
-            fetchIncidents();
         } else {
             document.getElementById('loginError').textContent = 'Invalid login credentials';
         }
@@ -87,9 +86,9 @@ function fetchIncidents() {
 }
 
 // Check if token exists when loading the main page
-if (window.location.pathname.endsWith('index.html')) {
+if (window.location.pathname.endsWith('main.html')) {
     if (!localStorage.getItem('token')) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     } else {
         fetchIncidents();
     }
@@ -188,4 +187,3 @@ function submitIncident() {
         alert('Error getting geolocation');
     });
 }
-
